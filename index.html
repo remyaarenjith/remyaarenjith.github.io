@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Remya K R | Full-Stack Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-container">
+        <div class="nav-logo">Remya K R</div>
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">&#9776;</button>
+        <ul class="nav-list" id="navList">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="main-content" id="home">
+      <div class="container">
+        <h1>Remya K R</h1>
+        <h2>I'm Full Stack Developer</h2>
+        <p class="animate-text">Passionate about building accessible and high-quality web experiences by solving complex problems with elegant, thoughtful solutions.</p>
+        <div>  
+          <div class="star star1"></div>
+          <div class="star star2"></div>
+          <div class="star star3"></div>
+          <div class="star star4"></div>
+          <div class="star star5"></div>
+        </div>
+        <div class="btn-group">
+          <a href="#projects" class="btn btn-primary"><i class="fas fa-laptop-code"></i> &nbsp;&nbsp;View My Projects</a>
+          <a href="#contact" class="btn btn-secondary"><i class="fas fa-comment-dots"></i> &nbsp;&nbsp;Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about animate-text" id="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <h3 class="typing"></h3>
+        <p>With over 6 years of experience building end-to-end web applications that are fast, scalable, and user-friendly. My work bridges modern front-end frameworks with powerful back-end architectures, allowing me to craft robust solutions from concept to deployment.</p>
+        <p>I take pride in writing clean, maintainable code and designing intuitive user experiences. Whether I'm structuring databases, building APIs, or refining interfaces, I enjoy solving real-world problems with thoughtful design and efficient engineering.</p>
+        <p>Beyond code, I'm a lifelong learner who enjoys exploring new technologies and experimenting with creative ideas. In my free time, you'll often find me sketching or diving into the latest dev tools and frameworks.</p>
+        <p>I'm always open to exciting, forward-thinking collaborations where technology meets purpose.</p>
+      </div>
+    </section>
+
+    <section class="skills animate-text" id="skills">
+      <div class="container">
+        <h2>Skills</h2>
+        <ul>
+          <li class="animate-text"><i class="fab fa-php"></i><span>PHP</span></li>
+          <li class="animate-text"><i class="fab fa-laravel"></i><span>Laravel</span></li>
+          <li class="animate-text"><i class="fas fa-shopping-cart"></i><span>Opencart</span></li>
+          <li class="animate-text"><i class="fab fa-wordpress"></i><span>WordPress / CMS</span></li>
+          <li class="animate-text"><i class="fas fa-database"></i><span>MySQL</span></li>
+          <li class="animate-text"><i class="fas fa-leaf"></i><span>MongoDB</span></li>
+          <li class="animate-text"><i class="fab fa-html5"></i><span>HTML</span></li>
+          <li class="animate-text"><i class="fab fa-css3-alt"></i><span>CSS</span></li>
+          <li class="animate-text"><i class="fab fa-js-square"></i><span>JavaScript & jQuery</span></li>
+          <li class="animate-text"><i class="fab fa-react"></i><span>React.js</span></li>
+          <li class="animate-text"><i class="fab fa-angular"></i><span>Angular</span></li>
+          <li class="animate-text"><i class="fab fa-python"></i><span>Python</span></li>
+          <li class="animate-text"><i class="fas fa-server"></i><span>RESTful APIs</span></li>
+          <li class="animate-text"><i class="fas fa-search"></i><span>Solr</span></li>
+          <li class="animate-text"><i class="fab fa-git-alt"></i><span>Git & GitHub</span></li>
+          <li class="animate-text"><i class="fab fa-android"></i><span>Android (Java - legacy)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="projects animate-text" id="projects">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="project-grid">
+          <div class="project-card" tabindex="0"  data-id="chat" data-title="Chat application">
+            <div class="project-img" id="chat-img"></div>
+            <div class="project-text">
+              <h3 class="project-title">Chat application</h3>
+              <div>React JS / Laravel / Node js</div>
+            </div>
+            <div class="project-desc">
+              <p>A real-time messaging application featuring user profiles.</p>
+              <div>
+                Front-end : React, WebSockets<br>
+                Back-end : Laravel, Socket.IO, MySQL
+              </div>
+            </div>
+            <div class="hidden" id="chat-desc">
+              <p>A mobile-first horoscope app that enables users to read daily predictions and connect with astrologers via real-time chat and voice calls. Features include an astrologer dashboard, in-app wallet, AI-based astrologer matching, OTP login, and secure payments. Built using React Native, Node.js, MongoDB, and Socket.io, with a focus on performance, privacy, and a smooth user experience.</p>
+            </div>
+          </div>
+          <div class="project-card" tabindex="0"  data-id="opencart" data-title="Food ordering platform">
+            <div class="project-img" id="opencart-img"></div>
+            <div class="project-text">
+              <h3 class="project-title">Food ordering platform</h3>
+              <div>Opencart</div>
+            </div>
+            <div class="project-desc">
+              <p>Custom e-commerce site with user authentication, product catalog, shopping cart, and payment integration.</p>
+              <div>
+                Front-end : Opencart, Android<br>
+                Back-end : PHP (core & PHP framework), MySQL
+              </div>
+            </div>
+            <div class="hidden" id="opencart-desc">
+              <p>Built a scalable multistore eCommerce system using OpenCart, enabling centralized control of multiple storefronts with unique products, themes, and settings. Integrated Otter for automated order and delivery management, and HubRise for real-time data sync across POS and CRM platforms. Implemented region-specific payment gateways for secure, flexible transactions. Developed custom modules to enhance functionality and streamline operations. Resulted in improved efficiency, simplified management, and readiness for future growth.</p>
+            </div>
+          </div>
+          <div class="project-card" tabindex="0" data-id="hospital" data-title="Hospital Management API & Dashboard">
+            <div class="project-img" id="hospital-img"></div>
+            <div class="project-text">
+              <h3 class="project-title">Hospital Management API & Dashboard</h3>
+              <div>Angular / Laravel</div>
+            </div>
+            <div class="project-desc">
+              <p>A robust RESTful API for task management integrated with a responsive administrative dashboard.</p>
+              <div>
+                Front-end : Angular<br>
+                Back-end : Python, MongoDB
+              </div>
+            </div>
+            <div class="hidden" id="hospital-desc">
+              <p>Developed a full-featured hospital management dashboard for admins to manage doctors, patients, and appointments. The system includes role-based access, real-time status updates, and an intuitive UI for easy navigation. Also built a secure REST API allowing patients to book appointments online, view available time slots, and receive confirmations. Focused on performance, data security, and a seamless admin-to-patient workflow.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact animate-text" id="contact">
+      <div class="container">
+        <h2>Get in touch</h2>
+        <p>I'm currently open to new opportunities and collaborations. Feel free to reach out!</p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:your.email@example.com">remyaarenjith@gmail.com</a></p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/remya-kr/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/remyaarenjith" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+          <a href="https://www.instagram.com/codewithremya" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </section>
+    <section id="popup" class="popup">
+      <div class="popup-content">
+        <img id="popup-img" src="" alt="Project" />
+        <div class="popup-container">
+          <div id="p-title"></div>
+          <div class="close">&times;</div>
+        </div>
+        <p id="popup-desc"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Remya K R. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Text animation on scroll
+    const animatedTexts = document.querySelectorAll('.animate-text');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          if (entry.target.id === 'about') {
+            
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+    animatedTexts.forEach(el => observer.observe(el));
+
+    // Mobile nav toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const navList = document.getElementById('navList');
+
+    function toggleMenu() {
+      navList.classList.toggle('active');
+      // Change icon to X when open, hamburger when closed
+      menuBtn.innerHTML = navList.classList.contains('active') ? '&times;' : '&#9776;';
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-list a').forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('active');
+        menuBtn.innerHTML = '&#9776;';
+      });
+    });
+
+    document.querySelectorAll('.project-card').forEach(project => {
+      project.addEventListener('click', function () {
+        const popup = document.getElementById('popup');
+        const popupImg = document.getElementById('popup-img');
+        const popupTitle = document.getElementById('p-title');
+        const popupDesc = document.getElementById('popup-desc');
+
+        const id = this.getAttribute('data-id');
+
+        popupImg.src = `assets/img/${id}.png`;
+        popupDesc.innerHTML = document.getElementById(`${id}-desc`).innerHTML;
+        popupTitle.innerHTML = this.getAttribute('data-title');
+
+        popup.style.display = 'block';
+      });
+    });
+
+    document.querySelector('.close').addEventListener('click', function () {
+      document.getElementById('popup').style.display = 'none';
+    });
+
+    window.addEventListener('click', function (e) {
+      const popup = document.getElementById('popup');
+      if (e.target === popup) {
+        popup.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
