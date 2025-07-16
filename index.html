@@ -138,11 +138,11 @@
       </div>
     </section>
 
-    <section class="contact animate-text" id="contact">
+    <section class="contact" id="contact">
       <div class="container">
         <h2>Get in touch</h2>
         <p>I'm currently open to new opportunities and collaborations. Feel free to reach out!</p>
-        <p><i class="fas fa-envelope"></i> <a href="mailto:your.email@example.com">remyaarenjith@gmail.com</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:remyaarenjith@gmail.com">remyaarenjith@gmail.com</a></p>
         <div class="social-links">
           <a href="https://www.linkedin.com/in/remya-kr/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
           <a href="https://github.com/remyaarenjith" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
@@ -152,12 +152,14 @@
     </section>
     <section id="popup" class="popup">
       <div class="popup-content">
-        <img id="popup-img" src="" alt="Project" />
         <div class="popup-container">
-          <div id="p-title"></div>
-          <div class="close">&times;</div>
+          <img id="popup-img" src="" alt="Project" />
+          <div class="popup-header">
+            <div id="p-title"></div>
+            <div class="close" id="popup-close">&times;</div>
+          </div>
+          <div id="popup-desc"></div>
         </div>
-        <p id="popup-desc"></p>
       </div>
     </section>
   </main>
@@ -167,67 +169,120 @@
   </footer>
 
   <script>
-    // Text animation on scroll
-    const animatedTexts = document.querySelectorAll('.animate-text');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          if (entry.target.id === 'about') {
-            
-          }
+    // === Text Animation Class ===
+    class TextAnimator {
+      constructor(selector = '.animate-text') {
+        this.elements = document.querySelectorAll(selector);
+        if ('IntersectionObserver' in window) {
+          this.initObserver();
+        } else {
+          // Fallback: Immediately add 'in-view' class to all elements (no animation on scroll)
+          this.elements.forEach(el => el.classList.add('in-view'));
         }
-      });
-    }, { threshold: 0.1 });
-    animatedTexts.forEach(el => observer.observe(el));
+      }
 
-    // Mobile nav toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const navList = document.getElementById('navList');
+      initObserver() {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
 
-    function toggleMenu() {
-      navList.classList.toggle('active');
-      // Change icon to X when open, hamburger when closed
-      menuBtn.innerHTML = navList.classList.contains('active') ? '&times;' : '&#9776;';
+        this.elements.forEach(el => observer.observe(el));
+      }
     }
 
-    menuBtn.addEventListener('click', toggleMenu);
-
-    // Close menu when a link is clicked
-    document.querySelectorAll('.nav-list a').forEach(link => {
-      link.addEventListener('click', () => {
-        navList.classList.remove('active');
-        menuBtn.innerHTML = '&#9776;';
-      });
-    });
-
-    document.querySelectorAll('.project-card').forEach(project => {
-      project.addEventListener('click', function () {
-        const popup = document.getElementById('popup');
-        const popupImg = document.getElementById('popup-img');
-        const popupTitle = document.getElementById('p-title');
-        const popupDesc = document.getElementById('popup-desc');
-
-        const id = this.getAttribute('data-id');
-
-        popupImg.src = `assets/img/${id}.png`;
-        popupDesc.innerHTML = document.getElementById(`${id}-desc`).innerHTML;
-        popupTitle.innerHTML = this.getAttribute('data-title');
-
-        popup.style.display = 'block';
-      });
-    });
-
-    document.querySelector('.close').addEventListener('click', function () {
-      document.getElementById('popup').style.display = 'none';
-    });
-
-    window.addEventListener('click', function (e) {
-      const popup = document.getElementById('popup');
-      if (e.target === popup) {
-        popup.style.display = 'none';
+    // === Mobile Navigation Toggle Class ===
+    class MobileNav {
+      constructor(btnId, listId) {
+        this.menuBtn = document.getElementById(btnId);
+        this.navList = document.getElementById(listId);
+        this.navLinks = this.navList.querySelectorAll('a');
+        this.icons = { open: '&times;', closed: '&#9776;' };
+        this.init();
       }
+
+      init() {
+        if (!this.menuBtn || !this.navList) return;
+
+        this.menuBtn.addEventListener('click', () => this.toggle());
+        this.navLinks.forEach(link => link.addEventListener('click', () => this.close()));
+      }
+
+      toggle() {
+        const isOpen = this.navList.classList.toggle('active');
+        this.menuBtn.innerHTML = isOpen ? this.icons.open : this.icons.closed;
+      }
+
+      close() {
+        this.navList.classList.remove('active');
+        this.menuBtn.innerHTML = this.icons.closed;
+      }
+    }
+
+    // === Project Popup Manager ===
+    class PopupManager {
+      constructor(popupId = 'popup') {
+        this.popup = document.getElementById(popupId);
+        this.popupImg = document.getElementById('popup-img');
+        this.popupTitle = document.getElementById('p-title');
+        this.popupDesc = document.getElementById('popup-desc');
+        this.initListeners();
+      }
+
+      open(id, title) {
+        const descEl = document.getElementById(`${id}-desc`);
+        if (!descEl) return;
+
+        this.popupImg.src = `assets/img/${id}.png`;
+        this.popupTitle.textContent = title;
+        this.popupDesc.innerHTML = descEl.innerHTML;
+
+        this.popup.classList.add('active');
+        document.body.classList.add('no-scroll');
+      }
+
+      close() {
+        this.popup.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+      }
+
+      initListeners() {
+        document.querySelectorAll('.project-card').forEach(card => {
+          card.addEventListener('click', () => {
+            const id = card.dataset.id;
+            const title = card.dataset.title;
+            this.open(id, title);
+          });
+        });
+
+        // ESC key to close
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && this.popup.classList.contains('active')) {
+            this.close();
+          }
+        });
+
+        // Optional: Close on click outside content
+        this.popup.addEventListener('click', (e) => {
+          if (e.target === this.popup || e.target.id === 'popup-close') {
+            this.close();
+          }
+        });
+      }
+    }
+
+    // === Init All Features on DOM Ready ===
+    let popupManager;
+    document.addEventListener('DOMContentLoaded', () => {
+      new TextAnimator();
+      new MobileNav('menuBtn', 'navList');
+      popupManager = new PopupManager();
     });
+
   </script>
 </body>
 </html>
